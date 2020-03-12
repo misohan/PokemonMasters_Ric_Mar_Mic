@@ -1,17 +1,16 @@
-public class View{
-    Card newCard;
-    String colour;
+import java.io.IOException;
 
-    public View(Card newCard, String colour) {
-        this.newCard = newCard;
-        this.colour = colour;
+public class View {
+    CardParserImpl cardParser;
+    
+    
+    public void printCard(String name, String fire, String water, String leaf) throws IOException {
+        System.out.println("--------------------");
+        System.out.println("|    " + name +"     |");
+        System.out.println("|     Fire: " + fire+"     |" );
+        System.out.println("|    Water: " + water +"     |" );
+        System.out.println("|     Leaf: " + leaf+"     |" );
+        System.out.println("--------------------");
     }
-
-    public void displayTestCard(){
-        System.out.println("This is Pokemon " + newCard.getName());
-        System.out.println("🔥 Fire attack: " + newCard.getFire());
-        System.out.println("💧 Water attack: " + newCard.getWater());
-        System.out.println("🌿 Leaf attack: " + newCard.getLeaf());
-        System.out.println("Its " + colour);
-    }
+    
 }
