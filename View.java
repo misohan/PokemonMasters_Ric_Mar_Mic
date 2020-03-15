@@ -1,10 +1,15 @@
 import java.io.IOException;
+import java.util.List;
 
-public class View {
+public class View extends CardParserImpl {
     CardParserImpl cardParser;
     
     
-    public void printCard(String name, String fire, String water, String leaf) throws IOException {
+    public void printCard(List<String> card) throws IOException {
+        String name = card.get(0);
+        String fire = card.get(1);
+        String water = card.get(2);
+        String leaf = card.get(3);
         System.out.println("--------------------");
         System.out.println("|    " + name +"     |");
         System.out.println("|     Fire: " + fire+"     |" );
