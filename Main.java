@@ -7,9 +7,7 @@ import java.util.Scanner;
 
 
 public class Main{
-	Scanner scanner = new Scanner(System.in);
 	CardParserDAO parser = new CardParserImpl();
-	View view = new View();
 	public static void main(String[] args) throws IOException {
 		Scanner scanner = new Scanner(System.in);
 		Player newPlayer = new Player();
