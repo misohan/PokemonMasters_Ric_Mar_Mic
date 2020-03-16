@@ -12,7 +12,7 @@ public class Player extends CardParserImpl {
         
         
         for(int i = 1; i<4; i++){
-            int randInt = random.nextInt(10);
+            int randInt = random.nextInt(30);
             String elementsData = readFileToList(fileName).get(randInt);
             listOfString.add(elementsData);
 
@@ -49,9 +49,22 @@ public class Player extends CardParserImpl {
     }
     public void checkWin(boolean checkStatus){
         if(checkStatus){
-            System.out.println("YOU WON");
+            System.out.println("You won this round, you are taking opponents card.");
         } else{
-            System.out.println("Sorry about that");
+            System.out.println("Sorry about that, your opponent is taking your card.");
+        }
+    }
+    public String getCardToString(int indexCard,ArrayList<String> playerSet){
+        return playerSet.get(indexCard-1);
+
+    }
+    public void AddCardToWinner(boolean isWin, ArrayList<String> Set1, ArrayList<String> Set2, String card1String, String card2String, int indexP1, int indexP2 ){
+        if(isWin){
+            Set1.add(card2String);
+            Set2.remove(indexP2-1);
+        } else{
+            Set2.add(card1String);
+            Set1.remove(indexP1-1);
         }
     }
 
