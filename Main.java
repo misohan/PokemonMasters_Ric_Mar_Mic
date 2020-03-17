@@ -10,8 +10,11 @@ public class Main{
 	CardParserDAO parser = new CardParserImpl();
 	public static void main(String[] args) throws IOException {
 		Scanner scanner = new Scanner(System.in);
+		
 		Player newPlayer = new Player();
 		View newView = new View();
+		Battle newBattle = new Battle();
+
 		ArrayList<String> Set1 = newPlayer.randomizePlayerSet();
 		ArrayList<String> Set2 = newPlayer.randomizePlayerSet();
 
@@ -45,33 +48,20 @@ public class Main{
 
 			boolean checkStatus = newPlayer.compareCards(card1, card2, attribute);
 
-			newPlayer.AddCardToWinner(checkStatus, Set1, Set2, card1String, card2String, choice, nextStep);
+			newBattle.AddCardToWinner(checkStatus, Set1, Set2, card1String, card2String, choice, nextStep);
+			newBattle.checkWin(checkStatus);
 
-			newPlayer.checkWin(checkStatus);
+			newView.printBattleResult(Set1, Set2, listSize);
 			
-			if((listSize>0) && (Set2.size()>0)){
-				System.out.println("Next round");
-			} else if(listSize==0){
-				System.out.println("You lost this game");
-			} else if(Set2.size()==0){
-				System.out.println("******************");
-				System.out.println("******************");
-				System.out.println("You won this game");
-				System.out.println("Wohooooo");
-				System.out.println("******************");
-				System.out.println("******************");
+			if((Set1.size()==0) || (Set2.size()==0)){
+				System.out.println("End of the Game");
 				break;
+
 			}
 
 		}
 		scanner.close();
-		
-		
-	}
-	
-	
-
-    
+	}    
 }
 
 		
