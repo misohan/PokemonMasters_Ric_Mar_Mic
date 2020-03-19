@@ -44,8 +44,8 @@ public class CardParserImpl implements CardParserDAO {
         return listOfString;
     }
     public String getName(int index) throws IOException {
-        String fire = separateStringToList(index).get(0);
-        return fire;
+        String name = separateStringToList(index).get(0);
+        return name;
     }
     public String getFire(int index) throws IOException {
         String fire = separateStringToList(index).get(1);

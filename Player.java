@@ -12,7 +12,7 @@ public class Player extends CardParserImpl {
         
         
         for(int i = 1; i<4; i++){
-            int randInt = random.nextInt(30);
+            int randInt = random.nextInt(75);
             String elementsData = readFileToList(fileName).get(randInt);
             listOfString.add(elementsData);
 
@@ -21,7 +21,7 @@ public class Player extends CardParserImpl {
         
     }
     public List<String> chooseCard(int indexCard, ArrayList<String> playerSet) throws IOException {
-        String elementsData = playerSet.get(indexCard-1);
+        String elementsData = playerSet.get(indexCard);
         String[] elements = elementsData.split(",");
         List<String> elementsList = Arrays.asList(elements);
         ArrayList<String> listOfString = new ArrayList<String>(elementsList);
@@ -48,9 +48,16 @@ public class Player extends CardParserImpl {
         else return false;
     }
     public String getCardToString(int indexCard,ArrayList<String> playerSet){
-        return playerSet.get(indexCard-1);
+        return playerSet.get(indexCard);
 
     }
+    public void addArrayToArray(ArrayList<String> Set1, ArrayList<String> Set2){
+        ArrayList<String> newArray = new ArrayList<String>();
+        newArray.addAll(Set1);
+        newArray.addAll(Set2);
+        System.out.println(newArray);
+    }
+    
     
 
 }

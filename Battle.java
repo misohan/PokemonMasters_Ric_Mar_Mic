@@ -4,20 +4,28 @@ import java.util.List;
 public class Battle {
     Player player;
 
-    public void AddCardToWinner(boolean isWin, ArrayList<String> Set1, ArrayList<String> Set2, String card1String, String card2String, int indexP1, int indexP2 ){
-        if(isWin){
+    public void redistributeCardsToPlayers(boolean isWin, ArrayList<String> Set1, ArrayList<String> Set2, String card1String, String card2String, int index){
+        if(isWin){      
             Set1.add(card2String);
-            Set2.remove(indexP2-1);
+            Set1.add(card1String);
+           
+            Set2.remove(0);       
+            Set1.remove(0);
+           
         } else{
             Set2.add(card1String);
-            Set1.remove(indexP1-1);
+            Set2.add(card2String);
+
+            Set1.remove(0);
+            Set2.remove(0);
         }
     }
+  
     public void checkWin(boolean checkStatus){
         if(checkStatus){
-            System.out.println("You won this round, you are taking opponents card.");
+            System.out.println("Player1: You won this round, you are taking opponents card.");
         } else{
-            System.out.println("Sorry about that, your opponent is taking your card.");
+            System.out.println("Player: You won this round, you are taking opponents card.");
         }
     }
     public boolean compareCards(List<String> playerOneCard, List<String> playerTwoCard, int index){
@@ -27,5 +35,19 @@ public class Battle {
             return true;
         }
         else return false;
+    }
+    public void checkWinner(boolean whoWon, String identifyPlayer){
+        if(whoWon){
+            identifyPlayer  = "Player1";
+        } else if(whoWon==false){
+            identifyPlayer = "Player2";
+        }
+    }
+    public boolean setWinner(boolean checkWinner){
+        if(checkWinner){			
+            return true;            
+        } else{            
+            return false;            
+        }
     }    
 }
