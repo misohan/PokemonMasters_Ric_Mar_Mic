@@ -41,15 +41,17 @@ public class Battle {
         }
         else return false;
     }
-    public void checkWinner(boolean whoWon, String identifyPlayer){
+    public void roundWinner(boolean whoWon, String identifyPlayer){
         if(whoWon){
+            System.out.println("Player1 is called");
             identifyPlayer  = "Player1";
-        } else if(whoWon==false){
+        } else {
+            System.out.println("Player2 is called");
             identifyPlayer = "Player2";
         }
     }
     public boolean setWinner(boolean checkWinner){
-        if(checkWinner){			
+        if(checkWinner){            
             return true;            
         } else{            
             return false;            

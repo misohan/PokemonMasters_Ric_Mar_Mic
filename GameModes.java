@@ -15,15 +15,13 @@ public class GameModes {
 		ArrayList<String> Set1 = newPlayer.randomizePlayerSet();
         ArrayList<String> Set2 = newPlayer.randomizePlayerSet();
 		
+		String identifyPlayer = "Player1";
 		int choice = 0;
-        boolean whoWon = true;
 		int listSize = Set1.size();
 		while(listSize>0){
 			
-			String identifyPlayer = "Player1";
-
 			newView.printPlayersSets(Set1, Set2);
-			newBattle.checkWinner(whoWon, identifyPlayer);
+			
 	
 			List<String> card1 = newPlayer.chooseCard(choice, Set1);
 			List<String> card2 = newPlayer.chooseCard(choice, Set2);
@@ -36,13 +34,19 @@ public class GameModes {
 			int attribute = scanner.nextInt();
 
 			boolean checkWinner = newPlayer.compareCards(card1, card2, attribute);
+			System.out.println("Compare cards method returns" + checkWinner);
 
 			newBattle.redistributeCardsToPlayers(checkWinner, Set1, Set2, card1String, card2String, choice);
 			newBattle.checkWin(checkWinner);			
 
-			whoWon = newBattle.setWinner(checkWinner);
-
 			newView.printBattleResult(Set1, Set2, listSize);
+
+			if(checkWinner){
+				identifyPlayer= "Player1";
+			} else{
+				identifyPlayer = "Player2";
+			}
+			
 			
 			if((Set1.size()==0) || (Set2.size()==0)){
 				System.out.println("End of the Game");
