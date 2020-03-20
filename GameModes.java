@@ -34,7 +34,6 @@ public class GameModes {
 			int attribute = scanner.nextInt();
 
 			boolean checkWinner = newPlayer.compareCards(card1, card2, attribute);
-			System.out.println("Compare cards method returns" + checkWinner);
 
 			newBattle.redistributeCardsToPlayers(checkWinner, Set1, Set2, card1String, card2String, choice);
 			newBattle.checkWin(checkWinner);			
