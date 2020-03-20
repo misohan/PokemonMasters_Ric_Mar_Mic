@@ -44,7 +44,11 @@ public class Player extends CardParserImpl {
         int playerTwoAttributeInt = Integer.parseInt(chooseAttribute(index, playerTwoCard));
         if(playerOneAttributeInt > playerTwoAttributeInt){
             return true;
+        } else if(playerOneAttributeInt == playerTwoAttributeInt){
+            System.out.println("Attributes draw! RNG God must decide!");
+            return setRandomWinner();
         }
+        
         else return false;
     }
     public String getCardToString(int indexCard,ArrayList<String> playerSet){
@@ -57,6 +61,21 @@ public class Player extends CardParserImpl {
         newArray.addAll(Set2);
         System.out.println(newArray);
     }
+    public boolean setRandomWinner(){
+        Random randomNumber = new Random();
+        int playerOneNumber = randomNumber.nextInt(1000);
+        int playerTwoNumber = randomNumber.nextInt(1000);
+        if(playerOneNumber>playerTwoNumber){
+            System.out.println("Player1 was chosen by RNG God");
+            return true;
+        } else if(playerOneNumber==playerTwoNumber){
+            System.out.println("RNG draw! This is madness! Again");
+            return setRandomWinner();
+        }
+        System.out.println("Player2 was chosen by RNG God");
+        return false;
+        
+    }    
     
     
 
